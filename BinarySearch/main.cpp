@@ -1,43 +1,39 @@
 /*
 *
-Just playing around with binary and linear search. No idea.
+Implementing binary search
 */
 
 #include <iostream>
 using namespace std;
 
+//get rid of fixed array 
 int foo[10] = { 2, 16, 40, 77, 88, 99, 105, 120, 150 };
-int n, result = 0;
-int length = 10;
-
 
 int sillySearch(int element) {
 
-	//Figure out array length and make first split
-	length = length / 2;
-	result = foo[length];
-	
-		if (result < element) 
+	int minIndex = 0;
+	int maxIndex = 10 - 1; //array.length here plz
+	int curElement, curIndex;
+
+	while (minIndex < maxIndex) {
+
+		curIndex = (minIndex + maxIndex) / 2 | 0;
+		curElement = foo[curIndex];
+		//curElement = foo[(minIndex + maxIndex) / 2 | 0];
+
+		if (curElement < element)
 		{
-			while (length<10) {
-				result = foo[(length)];
-				length++;
-				if (result == element) {
-					return result;
-				}	
-			}
+			minIndex = curIndex + 1;
 		}
-		else
+		else if (curElement > element)
 		{
-			while (length>0) {
-				result = foo[(length)];
-				length--;
-				if (result == element) {
-					return result;
-				}
-			}
+			maxIndex = curIndex + 1;
 		}
-		
+		else {
+			return curIndex;
+		}
+	}
+
 	return -1;
 }
 
@@ -46,5 +42,5 @@ int main(int argc, char argv[])
 	//first sort the array ascenging order
 	int tell = sillySearch(40);
 	cout << tell;
-	cout << "Hello\n";
+	cout << "Hello World Once Again!\n";
 }
