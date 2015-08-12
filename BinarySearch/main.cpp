@@ -19,7 +19,6 @@ int sillySearch(int element) {
 
 		curIndex = (minIndex + maxIndex) / 2 | 0;
 		curElement = foo[curIndex];
-		//curElement = foo[(minIndex + maxIndex) / 2 | 0];
 
 		if (curElement < element)
 		{
